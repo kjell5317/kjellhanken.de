@@ -6,6 +6,6 @@ import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "kjellhanken.de",
+  site: "https://kjellhanken.de",
   integrations: [react(), tailwind(), sitemap()],
 });
