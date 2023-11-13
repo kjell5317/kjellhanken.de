@@ -1,0 +1,83 @@
+/* Lexend */
+@font-face {
+    font-family: 'Lexend';
+    src: url("/fonts/Lexend/Lexend-Light.ttf") format("truetype");
+    font-weight: 300;
+}
+@font-face {
+    font-family: 'Lexend';
+    src: url("/fonts/Lexend/Lexend-Regular.ttf") format("truetype");
+    font-weight: 400;
+}
+@font-face {
+    font-family: 'Lexend';
+    src: url("/fonts/Lexend/Lexend-Medium.ttf") format("truetype");
+    font-weight: 500;
+}
+@font-face {
+    font-family: 'Lexend';
+    src: url("/fonts/Lexend/Lexend-SemiBold.ttf") format("truetype");
+    font-weight: 600;
+}
+@font-face {
+    font-family: 'Lexend';
+    src: url("/fonts/Lexend/Lexend-Bold.ttf") format("truetype");
+    font-weight: 700;
+}
+
+/* Lexend Exa */
+@font-face {
+    font-family: 'Lexend Exa';
+    src: url("/fonts/Lexend_Exa/LexendExa-Light.ttf") format("truetype");
+    font-weight: 300;
+}
+@font-face {
+    font-family: 'Lexend Exa';
+    src: url("/fonts/Lexend_Exa/LexendExa-Regular.ttf") format("truetype");
+    font-weight: 400;
+}
+@font-face {
+    font-family: 'Lexend Exa';
+    src: url("/fonts/Lexend_Exa/LexendExa-Medium.ttf") format("truetype");
+    font-weight: 500;
+}
+@font-face {
+    font-family: 'Lexend Exa';
+    src: url("/fonts/Lexend_Exa/LexendExa-SemiBold.ttf") format("truetype");
+    font-weight: 600;
+}
+@font-face {
+    font-family: 'Lexend Exa';
+    src: url("/fonts/Lexend_Exa/LexendExa-Bold.ttf") format("truetype");
+    font-weight: 700;
+}
+
+body {
+    max-width: 2000px;
+    margin: auto;
+}
+
+:root {
+    --font-size-text: clamp(0.875rem, 0.242vw + 0.822rem, 1.125rem);
+    --font-size-h2: clamp(1.875rem, 0.364vw + 1.795rem, 2.25rem);
+}
+
+.mobile {
+    display: none;
+}
+@media screen and (max-width: 800px) {
+    .mobile {
+        display: block;
+    }
+}
+
+button:hover {
+    opacity: 0.7;
+}
+
+button {
+    padding: 3px 12px;
+    font-family: Lexend;
+    font-weight: 400;
+    line-height: 110%; /* 14.3px */
+}

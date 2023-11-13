@@ -1,61 +1,145 @@
 ---
+import { Tag } from "./Tags.jsx";
+
 interface Props {
-	title: string;
-	body: string;
-	href: string;
+  title: string;
+  tag: string;
+  href: string;
+  date: string;
+  src: string;
 }
 
-const { href, title, body } = Astro.props;
+const { title, date, href, tag, src } = Astro.props;
 ---
 
-<li class="link-card">
-	<a href={href}>
-		<h2>
-			{title}
-			<span>&rarr;</span>
-		</h2>
-		<p>
-			{body}
-		</p>
-	</a>
+<li class={tag} key={title}>
+  <div class="side">
+    <img src={src} alt="" class="logo" />
+    <Tag name={tag} className="active" client:visible />
+  </div>
+  <div class="main">
+    <div class="header">
+      <div class="left">
+        <h2><a href={href}>{title}</a></h2>
+        <p>{date}</p>
+      </div>
+      <div class="right">
+        <slot name="icons" />
+        <Tag name={tag} className="mobile active" client:visible />
+      </div>
+      <hr class="mobile" />
+    </div>
+    <div class="content">
+      <slot name="content" />
+    </div>
+  </div>
 </li>
+
 <style>
-	.link-card {
-		list-style: none;
-		display: flex;
-		padding: 1px;
-		background-color: #23262d;
-		background-image: none;
-		background-size: 400%;
-		border-radius: 7px;
-		background-position: 100%;
-		transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-		box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
-	}
-	.link-card > a {
-		width: 100%;
-		text-decoration: none;
-		line-height: 1.4;
-		padding: calc(1.5rem - 1px);
-		border-radius: 8px;
-		color: white;
-		background-color: #23262d;
-		opacity: 0.8;
-	}
-	h2 {
-		margin: 0;
-		font-size: 1.25rem;
-		transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-	}
-	p {
-		margin-top: 0.5rem;
-		margin-bottom: 0;
-	}
-	.link-card:is(:hover, :focus-within) {
-		background-position: 0;
-		background-image: var(--accent-gradient);
-	}
-	.link-card:is(:hover, :focus-within) h2 {
-		color: rgb(var(--accent-light));
-	}
+  li {
+    padding: 15px;
+    display: flex;
+    position: relative;
+    width: 80%;
+    border-radius: 30px;
+    background: #2c2c2c;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+    box-shadow: 5px 5px 10px rgba(255, 255, 255, 0.25);
+  }
+  li::after {
+    content: "";
+    position: absolute;
+    top: -2px;
+    bottom: -2px;
+    left: -2px;
+    right: -2px;
+    border-radius: 30px;
+    background: linear-gradient(#e649f5, #4ac7fa);
+    z-index: -1;
+  }
+
+  .side {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin-right: 20px;
+    min-width: 100px;
+  }
+  .logo {
+    height: auto;
+    width: 100%;
+    border-radius: 10px;
+    padding: 5px;
+  }
+
+  .main {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+    column-gap: 20px;
+  }
+  .left {
+    display: flex;
+    align-items: last baseline;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+  .right {
+    display: flex;
+    align-items: center;
+    gap: 1vw;
+  }
+  h2 {
+    margin-right: 10px;
+    color: #fff;
+    text-align: center;
+    font-family: Lexend Exa;
+    font-size: var(--font-size-h2);
+    font-style: normal;
+    font-weight: 600;
+  }
+  .header p {
+    background: linear-gradient(90deg, #e649f5 0%, #4ac7fa 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+    font-family: Lexend Exa;
+    font-size: calc(var(--font-size-text) + 1px);
+    font-style: normal;
+    font-weight: 600;
+  }
+
+  .content {
+    color: #cbcbcb;
+    font-family: Lexend;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 120%; /* 22px */
+  }
+  hr {
+    height: 2px;
+    width: 100%;
+    background: linear-gradient(to right, #e649f5 0%, #4ac7fa 100%);
+    margin-top: 3px;
+    border: 0;
+  }
+
+  @media screen and (max-width: 800px) {
+    li .side {
+      display: none;
+    }
+    li {
+      width: 100%;
+    }
+  }
 </style>

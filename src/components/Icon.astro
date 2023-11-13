@@ -1,0 +1,17 @@
+---
+interface Props {
+  tooltip: string;
+  name: string;
+}
+
+const { name, tooltip } = Astro.props;
+---
+
+<div class="tooltip tooltip-bottom" data-tip={tooltip}>
+  <img src=`icons/${name}.svg` />
+</div>
+<style>
+  div {
+    padding: 5px;
+  }
+</style>
