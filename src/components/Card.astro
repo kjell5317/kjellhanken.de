@@ -1,5 +1,5 @@
 ---
-import { Tag } from "./Tags.jsx";
+import { Tag } from "./Tags.jsx";
 
 interface Props {
   title: string;
@@ -12,7 +12,7 @@ interface Props {
 const { title, date, href, tag, src } = Astro.props;
 ---
 
-<li class={tag} key={title}>
+<li class={tag}>
   <div class="side">
     <img src={src} alt="" class="logo" />
     <Tag name={tag} className="active" client:visible />
