@@ -1,6 +1,6 @@
 import { useState, type CSSProperties } from "react";
 
-const colors = ["#FFFFFF", "#FFC700", "#FF6B00", "#FF0000"];
+const colors = ["#2ea8ff", "#FFC700", "#22ba64", "#FF6B00"];
 var selected: string;
 var setSelected: React.Dispatch<React.SetStateAction<string>>;
 var tags = ["Work", "Education", "Social", "Project"];
@@ -11,7 +11,8 @@ export function Tags() {
     const style: CSSProperties = {
         display: "flex",
         flexWrap: "wrap",
-        margin: "25px 0"
+        padding: "20px 0",
+        gap: "15px"
     }
 
     return (
@@ -20,7 +21,7 @@ export function Tags() {
             {
               tags.map((tag) => (
                 <li key={tag}>
-                      <Tag name={tag} className="tag" />
+                      <Tag name={tag} className="tag btn" />
                 </li>
               ))
             }
@@ -31,12 +32,11 @@ export function Tags() {
 export function Tag({ name, className}: { name: string, className?: string}) {
 
     const style: CSSProperties = {
-        border: `2px solid ${colors[tags.indexOf(name) % colors.length] || "#4AC7FA"}`,
-        borderRadius: "20px",
+        border: `3px solid ${colors[tags.indexOf(name) % colors.length] || "#4AC7FA"}`,
         color: className?.includes("active") || selected === name ? "#000" : "#FFF",
         fontSize: className?.includes("tag") ? "calc(var(--font-size-text) + 2px)" : "calc(var(--font-size-text) + 1px)",
-        margin: className?.includes("tag") ? "0 10px" : "0 8px",
-        backgroundColor: className?.includes("active") || selected === name ? colors[tags.indexOf(name) % colors.length] : "transparent",
+        padding: className?.includes("tag") ? "8px 15px" : "3px 10px",
+        backgroundColor: className?.includes("active") || selected === name ? colors[tags.indexOf(name) % colors.length] : "#2c2c2c",
     }
 
     return (

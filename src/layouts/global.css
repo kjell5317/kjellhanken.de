@@ -60,6 +60,7 @@ body {
 :root {
     --font-size-text: clamp(0.875rem, 0.242vw + 0.822rem, 1.125rem);
     --font-size-h2: clamp(1.875rem, 0.364vw + 1.795rem, 2.25rem);
+    background-color: #212121;
 }
 
 .mobile {
@@ -71,13 +72,22 @@ body {
     }
 }
 
-button:hover {
-    opacity: 0.7;
+.btn {
+    @apply btn-sm;
+    @apply btn-ghost;
+    font-family: Lexend;
+    font-weight: 500;
+    line-height: 110%; /* 14.3px */
+    border-radius: 20px;
+    height: revert;
+    width: fit-content;
+    gap: 10px;
 }
 
-button {
-    padding: 3px 12px;
-    font-family: Lexend;
-    font-weight: 400;
-    line-height: 110%; /* 14.3px */
+main {
+    margin: 64px 15px 0;
+}
+
+.timeline li:nth-child(even) {
+    left: 20%;
 }

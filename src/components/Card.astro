@@ -15,7 +15,7 @@ const { title, date, href, tag, src } = Astro.props;
 <li class={tag}>
   <div class="side">
     <img src={src} alt="" class="logo" />
-    <Tag name={tag} className="active" client:visible />
+    <Tag name={tag} className="active btn" client:visible />
   </div>
   <div class="main">
     <div class="header">
@@ -25,7 +25,7 @@ const { title, date, href, tag, src } = Astro.props;
       </div>
       <div class="right">
         <slot name="icons" />
-        <Tag name={tag} className="mobile active" client:visible />
+        <Tag name={tag} className="mobile active btn " client:visible />
       </div>
       <hr class="mobile" />
     </div>
@@ -46,6 +46,7 @@ const { title, date, href, tag, src } = Astro.props;
     border: 2px solid transparent;
     background-clip: padding-box;
     box-shadow: 5px 5px 10px rgba(255, 255, 255, 0.25);
+    margin-bottom: 40px;
   }
   li::after {
     content: "";
@@ -56,7 +57,7 @@ const { title, date, href, tag, src } = Astro.props;
     right: -2px;
     border-radius: 30px;
     background: linear-gradient(#e649f5, #4ac7fa);
-    z-index: -1;
+    z-index: -2;
   }
 
   .side {
@@ -64,13 +65,11 @@ const { title, date, href, tag, src } = Astro.props;
     flex-direction: column;
     justify-content: space-evenly;
     margin-right: 20px;
-    min-width: 100px;
   }
   .logo {
     height: auto;
     width: 100%;
     border-radius: 10px;
-    padding: 5px;
   }
 
   .main {
