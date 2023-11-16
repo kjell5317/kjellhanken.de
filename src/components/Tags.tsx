@@ -37,6 +37,7 @@ export function Tag({ name, className}: { name: string, className?: string}) {
         fontSize: className?.includes("tag") ? "calc(var(--font-size-text) + 2px)" : "calc(var(--font-size-text) + 1px)",
         padding: className?.includes("tag") ? "8px 15px" : "3px 10px",
         backgroundColor: className?.includes("active") || selected === name ? colors[tags.indexOf(name) % colors.length] : "#2c2c2c",
+        margin: className?.includes("tag") ? "0" : "5px"
     }
 
     return (
