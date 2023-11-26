@@ -48,7 +48,7 @@ const { title, date, href, tag, src } = Astro.props;
     box-shadow: 5px 5px 10px rgba(255, 255, 255, 0.25);
     margin-bottom: 40px;
   }
-  li::after {
+  li::before {
     content: "";
     position: absolute;
     top: -2px;
@@ -58,6 +58,20 @@ const { title, date, href, tag, src } = Astro.props;
     border-radius: 30px;
     background: linear-gradient(#e649f5, #4ac7fa);
     z-index: -2;
+  }
+  li::after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    left: var(--left);
+    --left: -55px;
+    background-color: #212121;
+    border: 5px solid #4298e4;
+    border-radius: 50%;
+    z-index: 1;
+    transform: translateY(-50%);
   }
 
   .side {
@@ -70,7 +84,7 @@ const { title, date, href, tag, src } = Astro.props;
     height: auto;
     width: 100%;
     border-radius: 10px;
-    padding:5px;
+    padding: 5px;
   }
 
   .main {
@@ -140,6 +154,9 @@ const { title, date, href, tag, src } = Astro.props;
     }
     li {
       width: 100%;
+    }
+    li::after {
+      --left: -35px;
     }
   }
 </style>

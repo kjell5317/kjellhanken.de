@@ -55,6 +55,7 @@
 body {
     max-width: 2000px;
     margin: auto;
+    overflow-x: hidden;
 }
 
 :root {
@@ -63,12 +64,38 @@ body {
     background-color: #212121;
 }
 
+main {
+    margin: 64px 15px 0;
+}
+
+.timeline {
+    position: relative;
+    margin-left: 50px;
+}
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 4px;
+    background-color: white;
+    top: 0;
+    bottom: 0;
+    left: -45px;
+    border-radius: 10px;
+    background: linear-gradient(#e649f5, #4ac7fa);
+}
+
 .mobile {
     display: none;
 }
 @media screen and (max-width: 800px) {
     .mobile {
         display: block;
+    }
+    .timeline {
+        margin-left: 30px;
+    }
+    .timeline::after {
+        left: -25px;
     }
 }
 
@@ -83,11 +110,11 @@ body {
     width: fit-content;
 }
 
-main {
-    margin: 64px 15px 0;
-}
 @media screen and (min-width: 800px) {
     .timeline li:nth-child(even) {
         left: 20%;
+    }
+    .timeline li:nth-child(even)::after {
+        left: calc(-25.1% + var(--left))
     }
 }
