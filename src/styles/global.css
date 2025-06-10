@@ -1,0 +1,49 @@
+@import "tailwindcss";
+body {
+    background-color: black;
+    color: white;
+    padding: 10px;
+    height: 100vh;
+    font-family: Lexend, sans-serif;
+}
+
+h1 {
+    color: #fff;
+    white-space: nowrap; /* Prevents the text from wrapping */
+    overflow: hidden; /* Ensures the content is not revealed until the animation */
+    border-right: .10em solid #2099ff; /* The typwriter cursor */
+    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+    animation:
+      typing 1.5s steps(30, end),
+      blink-caret .7s step-end infinite;
+    background-image: linear-gradient(90deg, #e649f5 25%, #2099ff 100%);
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  img:hover {
+    transform: scale(1.3);
+  }
+
+  img {
+    transition: all 0.2s linear;
+  }
+
+/* The typing effect */
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+  }
+
+  /* The typewriter cursor effect */
+  @keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: #2099ff }
+  }
+
+  @font-face {
+    font-family: 'Lexend';
+    src: url("/LexendExa-Medium.ttf") format("truetype");
+}
